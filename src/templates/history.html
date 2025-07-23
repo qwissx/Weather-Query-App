@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="{{ url_for('static', path='/css/history.css') }}" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="weatherHistory" content="width=device-width, initial-scale=1.0">
+  <title>WeatherHistory</title>
+</head>
+<body>
+    <h1>Your history:</h1>
+
+    <ul class="history-list">
+  {% for query in history %}
+    <li class="query-item">
+      <div class="query-header">
+        {{ loop.index }}. {{ query.city }} ({{ query.time_stamp }})
+      </div>
+      <ul class="query-details">
+        <li>Temperature - {{ query.temperature }}</li>
+        <li>Main description - {{ query.main }}</li>
+        <li>Coords: latitude {{ query.latitude }}, longitude {{ query.longitude }}</li>
+      </ul>
+    </li>
+  {% endfor %}
+</ul>
+
+  </body>
+</html>

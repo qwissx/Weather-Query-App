@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="weatherByCity" content="width=device-width, initial-scale=1.0">
+  <title>WeatherByCity</title>
+</head>
+<body>
+    <input type="text" name="city" id="city" placeholder="Enter city" required>
+    <div id="errorContainer" style="color: red; margin: 10px 0;"></div>
+    <button onclick="getWeather()">Get weather</button>
+
+    <script>
+        async function getWeather() {
+          const city = document.getElementById("city").value.trim();
+          const errorContainer = document.getElementById("errorContainer");
+          errorContainer.innerHTML = "";
+        
+          if (!city.value.trim()) {
+            throw new Error("Error!"); 
+          }
+
+          const response = await fetch(`/weather/${city}`);
+
+          if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.detail || "Error!");
+          }
+
+          const data = await response.json();
+          alert(`${JSON.stringify(data)}`);  
+        }
+    </script>
+  
+</body>
+</html>

@@ -1,22 +1,26 @@
-import httpx
+from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy import select
 
-from src.config.settings import st
+from .models import Weather
 
+def save_query(
+    city: str,
+    main: str,
+    temperature: float,
+    latitude: float,
+    longitude: float,
+    session: AsyncSession,
+) -> None:
+    weather = Weather(
+        city=city,
+        main=main,
+        temperature=temperature,
+        latitude=latitude,
+        longitude=longitude
+    )
+    session.add(weather)
 
-async def fetch_city_weather(
-    city_name: str,
-    state_code: str | None = None,
-    country_code: int | None = None,
-    limit: int = 5
-) -> dict:
-    base_url = "http://api.openweathermap.org/geo/1.0/direct"
-    params = {
-        "q": f"{city_name},{state_code or ''},{country_code or ''}".strip(','),
-        "limit": limit,
-        "appid": st.weather_api_key,
-    }
-    
-    async with httpx.AsyncClient() as client:
-        response = await client.get(base_url, params=params)
-        response.raise_for_status()  # Проверка на ошибки HTTP
-        return response.json()
+async def get_all_queries(session: AsyncSession) -> list[Weather]:
+    result = await session.execute(select(Weather))
+    queries = result.scalars().all()
+    return queries

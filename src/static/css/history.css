@@ -1,0 +1,29 @@
+.history-list {
+  list-style: none;
+  padding: 0;
+}
+
+.query-item {
+  margin-bottom: 30px; 
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.query-header {
+  font-weight: bold;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #eee;
+}
+
+.query-details {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.query-details li {
+  padding: 3px 0;
+}
