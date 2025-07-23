@@ -26,7 +26,7 @@ docker run --name main \
 
 Запускаем контейнер python приложения.
 ```bash 
-docker run --name test -p 8000:8000 weather
+docker run --env-file .env --name test -p 8000:8000 weather
 ```
 
 Загружаем миграции базы данных.
