@@ -15,10 +15,6 @@
           const city = document.getElementById("city").value.trim();
           const errorContainer = document.getElementById("errorContainer");
           errorContainer.innerHTML = "";
-        
-          if (!city.value.trim()) {
-            throw new Error("Error!"); 
-          }
 
           const response = await fetch(`/weather/${city}`);
 
