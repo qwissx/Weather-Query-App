@@ -7,7 +7,7 @@ git clone https://github.com/qwissx/Weather-Query-App.git
 ```
 
 ## Run
-Скопировать .env.example файл в .env находящийся в корневом каталоге и вставить свой API клюс с сайта OpenWeatherMap.
+Скопировать .env.example файл в .env находящийся в корневом каталоге и вставить свой API ключ с сайта OpenWeatherMap.
 
 Затем необходимо создать образ приложения.
 ```bash
