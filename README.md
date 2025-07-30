@@ -1,5 +1,4 @@
 # Weather-Query-App
-Тестовое задание для СМД-БАЙ ГРУПП.
 
 ## Install
 ```bash
